@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Linguística Conectada</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="experience">
+<section id="stageHome" class="stage stage-dark active">
+<div class="provocation">
+<p class="eyebrow">QUIZ INTERATIVO</p>
+<h2>Bem-vindo ao nosso quiz gramatical</h2>
+<p>Teste o seu domínio da língua portuguesa</p>
+<button id="startQuiz" class="pill-btn">Começar →</button>
+</div>
+</section>
+
+<section id="stage1" class="stage stage-dark">
+<div class="progress-wrap">
+<div id="progressLabel">PERGUNTA 1 DE 5</div>
+<div class="progress"><span id="progressBar"></span></div>
+</div>
+<div id="questionCard" class="question-card">
+<p class="eyebrow">CERTO OU ERRADO?</p>
+<h1 id="questionText"></h1>
+<div class="answer-buttons">
+<button class="answer-btn" data-answer="certo">Certo</button>
+<button class="answer-btn" data-answer="errado">Errado</button>
+</div>
+<p id="feedback" class="feedback"></p>
+</div>
+</section>
+
+<section id="stage2" class="stage stage-dark">
+<div class="provocation">
+<div class="thinking">🤔</div>
+<p class="eyebrow">ENTÃO, VAMOS PENSAR...</p>
+<h2>A língua é viva, diversa e cheia de alternativas para cada situação.</h2>
+<p>Sendo assim, por que acabamos de reduzir tudo a um simples <span>"certo" ou "errado"</span>?</p>
+<button id="learnMore" class="pill-btn">Quero saber mais →</button>
+</div>
+</section>
+
+<section id="stage3" class="stage stage-project">
+<header>
+<p class="eyebrow warm">UMA OUTRA FORMA DE OLHAR PARA A LÍNGUA</p>
+<h2>Conheça o projeto<br><span>Linguística Conectada</span></h2>
+<p>Uma proposta para levar informações mais claras, acessíveis e menos preconceituosas sobre a língua portuguesa para os espaços digitais.</p>
+</header>
+<div class="flashcard-area">
+<button class="nav-card prev" aria-label="Anterior">←</button>
+<article id="flashcard" class="flashcard">
+<div id="cardNumber">01</div>
+<div id="cardIcon" class="card-icon">⚠️</div>
+<p id="cardTag" class="card-tag"></p>
+<h3 id="cardTitle"></h3>
+<p id="cardText"></p>
+</article>
+<button class="nav-card next" aria-label="Próximo">→</button>
+</div>
+<div id="dots" class="dots"></div>
+<p class="hint">Use as setas ou deslize para conhecer o projeto</p>
+<footer>
+<p class="project-credit">Projeto de Extensão desenvolvido na Universidade do Estado do Rio de Janeiro (UERJ), sob a orientação do Prof. Dr. Ricardo Joseh Lima</p>
+<p>“A língua não precisa de mais juízes. Precisa de mais explicações.”</p>
+<button id="restart" class="restart-btn">Recomeçar experiência</button>
+</footer>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
