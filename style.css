@@ -1,12 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-:root{--dark:#1d1e1e;--text:#e7e4dd;--muted:#999b96;--cream:#e4f8e4;--green:#4e6552;--card-bg:rgba(255, 255, 255, 0.72)}
+:root{--dark:#151616;--text:#e7e4dd;--muted:#999b96;--cream:#e4f8e4;--green:#4e6552;--card-bg:rgba(255, 255, 255, 0.45)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.bg-animation{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 45%,#222423,#141515 80%);overflow:hidden}
+.bg-animation span{position:absolute;display:block;width:20vw;height:20vw;background:rgba(78, 101, 82, 0.08);border-radius:50%;filter:blur(60px);animation:floatOrb 15s infinite alternate ease-in-out}
+.bg-animation span:nth-child(1){top:-10%;left:-10%;animation-duration:18s}
+.bg-animation span:nth-child(2){bottom:-10%;right:-10%;animation-duration:22s;animation-delay:-5s}
+.bg-animation span:nth-child(3){top:40%;left:60%;animation-duration:14s;animation-delay:-2s}
+.bg-animation span:nth-child(4){bottom:20%;left:10%;animation-duration:20s;animation-delay:-8s}
+@keyframes floatOrb{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px, 40px) scale(1.2)}}
+
+main.experience{position:relative;z-index:1}
 .stage{display:none;min-height:100vh;min-height:100dvh;padding:32px}
 .stage.active{display:flex;animation:enter .7s ease both}
-.stage-dark{align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#2a2c2b,#191a1a 78%)}
+.stage-dark{align-items:center;justify-content:center;background:transparent}
 .stage-project{flex-direction:column;align-items:center;background:var(--cream);color:#28302a;padding:50px 16px 40px;text-align:center}
 @keyframes enter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
 .progress-wrap{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:min(520px,calc(100% - 32px));font-size:.72rem;letter-spacing:.14em;color:var(--muted)}
 .progress{height:3px;background:#343635;border-radius:99px;margin-top:10px;overflow:hidden}
 .progress span{display:block;height:100%;width:20%;background:#aaa;border-radius:99px;transition:.5s}
@@ -15,49 +26,71 @@ body{margin:0;font-family:'DM Sans',sans-serif;background:var(--dark);color:var(
 .question-card.in{animation:in .45s ease both}
 @keyframes out{to{opacity:0;transform:translateX(-25px)}}
 @keyframes in{from{opacity:0;transform:translateX(25px)}to{opacity:1;transform:none}}
+
 .eyebrow,.card-tag{font-size:.72rem;letter-spacing:.16em;font-weight:600;color:#5c7058}
 .question-card h1{font-size:clamp(1.8rem, 4.5vw, 4.5rem);font-weight:500;letter-spacing:-.045em;line-height:1.15;margin:18px auto 32px}
 .answer-buttons{display:flex;justify-content:center;gap:14px}
 .answer-btn,.pill-btn,.restart-btn{border-radius:999px;border:1px solid #4a4d4b;padding:16px 28px;font:500 1rem 'DM Sans';cursor:pointer;touch-action:manipulation;transition:.2s}
-.answer-btn{min-width:140px;background:transparent;color:var(--text)}
+.answer-btn{min-width:140px;background:rgba(255,255,255,0.03);color:var(--text)}
 button:hover{transform:translateY(-2px)}
 .answer-btn:hover{background:#323432}
 .answer-btn.selected{background:#e5e1d7;color:#202120}
-.feedback{min-height:55px;max-width:650px;margin:24px auto 0;color:var(--muted);line-height:1.65;opacity:0;transition:.2s}
-.feedback.show{opacity:1}
+
+.feedback-container{min-height:110px;margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.feedback{max-width:650px;margin:0;color:var(--muted);line-height:1.65}
+.next-q-btn{background:#dedbd2;color:#202120;border:0;padding:12px 24px;font-size:0.9rem;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .3s ease, transform .3s ease}
+.next-q-btn.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+
 .provocation{max-width:880px;text-align:center;padding:0 12px}
-.thinking{font-size:4rem}
+.sociolinguistics-prov{max-width:760px}
+.sociolinguistics-prov h2{font-size:clamp(1.3rem, 2.8vw, 2.2rem);margin-bottom:24px;line-height:1.25}
+.sociolinguistics-prov p{color:var(--muted);font-size:1.05rem;line-height:1.65;margin-bottom:32px;text-align:left;background:rgba(255,255,255,0.03);padding:20px 24px;border-radius:16px;border:1px solid rgba(255,255,255,0.05)}
+
+.fade-text{opacity:0;transform:translateY(15px);animation:fadeInText .8s ease forwards}
+.delay-1{animation-delay:.25s}
+.delay-2{animation-delay:.5s}
+@keyframes fadeInText{to{opacity:1;transform:none}}
+
+.thinking{font-size:4rem;display:inline-block;animation:bounceEmoji 2s ease-in-out infinite}
+@keyframes bounceEmoji{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(10deg)}}
+
 .provocation h2{font-size:clamp(2rem, 5vw, 4.2rem);font-weight:500;letter-spacing:-.05em;line-height:1.1;margin:12px 0 16px}
-.provocation>p:not(.eyebrow){color:var(--muted);font-size:1.15rem;line-height:1.5;margin-bottom:32px}
+.provocation>p:not(.eyebrow):not(.sociolinguistics-prov p){color:var(--muted);font-size:1.15rem;line-height:1.5;margin-bottom:32px}
 .provocation>p span{color:var(--text);font-weight:600;background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:6px}
 .pill-btn{background:#dedbd2;color:#202120;border:0}
+
 .stage-project header{max-width:880px;padding:0 12px}
 .warm{color:#4a6345}
 .stage-project h2{font-size:clamp(2.2rem, 5vw, 5.5rem);font-weight:500;letter-spacing:-.055em;line-height:1.04;margin:0}
 .stage-project h2 span{color:var(--green)}
 header>p:last-child{max-width:690px;margin:18px auto 36px;color:#3f543b;line-height:1.6;font-size:1.05rem}
+
 .flashcard-area{display:grid;grid-template-columns:48px minmax(0,680px) 48px;align-items:center;gap:12px;width:min(100%,850px);padding:0 8px}
-.flashcard{min-height:360px;background:var(--card-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(204, 232, 204, 0.6);border-radius:24px;padding:clamp(24px, 5vw, 48px);text-align:left;box-shadow:0 12px 40px rgba(78, 101, 82, 0.06);position:relative;transition:opacity .18s ease, transform .18s ease;user-select:none}
+.flashcard{height:390px;background:var(--card-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(204, 232, 204, 0.6);border-radius:24px;padding:clamp(24px, 5vw, 48px);text-align:left;box-shadow:0 12px 40px rgba(78, 101, 82, 0.06);position:relative;transition:opacity .18s ease, transform .18s ease;user-select:none;display:flex;flex-direction:column;justify-content:flex-start}
 .flashcard.switching{opacity:0;transform:scale(.98) translateY(6px)}
 #cardNumber{position:absolute;right:24px;top:24px;color:#6b8267;font-size:.8rem;letter-spacing:.12em}
 .card-icon{font-size:2rem;margin-bottom:16px}
 .card-tag{margin:0 0 10px;color:#4a6345}
 .flashcard h3{font-size:clamp(1.4rem, 3vw, 2.2rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 12px;color:#233320}
-.flashcard>p:last-child{color:#354731;line-height:1.65;margin:0;font-size:0.98rem}
+.flashcard>p:last-child{color:#354731;line-height:1.65;margin:0;font-size:0.95rem;overflow-y:auto}
+
 .nav-card{width:44px;height:44px;background:rgba(255,255,255,0.7);border:1px solid #b8dfb8;border-radius:50%;color:#4e6552;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
 .dots{display:flex;gap:8px;margin:24px 0 8px}
 .dot{width:8px;height:8px;border:0;border-radius:50%;background:#a8cda8;cursor:pointer}
 .dot.active{width:26px;border-radius:99px;background:var(--green)}
 .hint{color:#4a6345;font-size:0.82rem;margin-bottom:40px}
+
 footer{color:#3f543b;padding:0 16px;max-width:720px;margin:0 auto}
 footer>p{font-size:1.05rem;line-height:1.5}
 .project-credit{font-size:0.88rem !important;color:#4f674b;margin-bottom:14px;line-height:1.5}
 .restart-btn{background:transparent;color:#4e6552;border-color:#9ec89e;padding:12px 20px;touch-action:manipulation;margin-top:8px}
+
 @media(max-width:768px){
   .stage{padding:20px 12px}
   .flashcard-area{grid-template-columns:1fr;gap:16px;width:100%}
-  .flashcard{min-height:340px;border-radius:20px}
+  .flashcard{height:410px;border-radius:20px}
   .nav-card{display:none}
   .answer-buttons{flex-direction:column;width:100%;align-items:stretch;gap:10px}
   .answer-btn{width:100%}
+}
 }
