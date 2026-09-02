@@ -113,4 +113,4 @@ fc.addEventListener('touchend', e=>{
 
 dotsMake();
 renderQ();
-renderC(0);
+renderC(0); 
