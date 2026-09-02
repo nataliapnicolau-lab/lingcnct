@@ -1,22 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-:root{--dark:#000000;--text:#e7e4dd;--muted:#999b96;--cream:#e4f8e4;--green:#4e6552;--card-bg:rgba(255, 255, 255, 0.45)}
+:root{--dark:#121212;--text:#e7e4dd;--muted:#999b96;--cream:#e4f8e4;--green:#4e6552;--card-bg:rgba(255, 255, 255, 0.45)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-
-.bg-animation{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;background:#000000;overflow:hidden}
-.bg-animation span{position:absolute;display:block;width:15vw;height:15vw;background:rgba(255, 255, 255, 0.04);border-radius:50%;animation:floatOrb 20s infinite alternate ease-in-out}
-.bg-animation span:nth-child(1){top:10%;left:15%;animation-duration:15s}
-.bg-animation span:nth-child(2){top:70%;left:80%;animation-duration:22s;animation-delay:-4s}
-.bg-animation span:nth-child(3){top:40%;left:70%;animation-duration:18s;animation-delay:-2s}
-.bg-animation span:nth-child(4){top:80%;left:20%;animation-duration:25s;animation-delay:-7s}
-.bg-animation span:nth-child(5){top:20%;left:80%;animation-duration:19s;animation-delay:-3s}
-.bg-animation span:nth-child(6){top:60%;left:10%;animation-duration:21s;animation-delay:-5s}
-@keyframes floatOrb{0%{transform:translate(0,0) scale(1)}100%{transform:translate(80px, -60px) scale(1.25)}}
 
 main.experience{position:relative;z-index:1}
 .stage{display:none;min-height:100vh;min-height:100dvh;padding:32px}
 .stage.active{display:flex;animation:enter .7s ease both}
-.stage-dark{align-items:center;justify-content:center;background:transparent}
+.stage-dark{align-items:center;justify-content:center;background:var(--dark)}
 .stage-project{flex-direction:column;align-items:center;background:var(--cream);color:#28302a;padding:32px 16px 24px;text-align:center;justify-content:center}
 @keyframes enter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
@@ -68,13 +58,15 @@ button:hover{transform:translateY(-2px)}
 header>p:last-child{max-width:690px;margin:10px auto 16px;color:#3f543b;line-height:1.5;font-size:0.95rem}
 
 .flashcard-area{display:grid;grid-template-columns:48px minmax(0,720px) 48px;align-items:center;gap:12px;width:min(100%,880px);padding:0 4px}
-.flashcard{height:340px;background:var(--card-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(204, 232, 204, 0.6);border-radius:24px;padding:28px 36px;text-align:left;box-shadow:0 12px 40px rgba(78, 101, 82, 0.06);position:relative;transition:opacity .18s ease, transform .18s ease;user-select:none;display:flex;flex-direction:column;justify-content:flex-start}
+.flashcard{height:390px;background:var(--card-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(204, 232, 204, 0.6);border-radius:24px;padding:28px 36px;text-align:left;box-shadow:0 12px 40px rgba(78, 101, 82, 0.06);position:relative;transition:opacity .18s ease, transform .18s ease;user-select:none;display:flex;flex-direction:column;justify-content:flex-start}
 .flashcard.switching{opacity:0;transform:scale(.98) translateY(6px)}
 #cardNumber{position:absolute;right:24px;top:24px;color:#6b8267;font-size:.8rem;letter-spacing:.12em}
-.card-icon{font-size:1.8rem;margin-bottom:10px}
-.card-tag{margin:0 0 8px;color:#4a6345}
-.flashcard h3{font-size:clamp(1.2rem, 2.5vw, 1.8rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 10px;color:#233320}
-.flashcard>p:last-child{color:#354731;line-height:1.55;margin:0;font-size:0.9rem;overflow-y:auto}
+.card-icon{font-size:1.8rem;margin-bottom:6px}
+.card-tag{margin:0 0 6px;color:#4a6345}
+.flashcard h3{font-size:clamp(1.1rem, 2.2vw, 1.6rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 8px;color:#233320}
+.flashcard p{color:#354731;line-height:1.45;margin:0 0 8px;font-size:0.85rem}
+.custom-list{margin:0;padding-left:18px;color:#354731;font-size:0.85rem;line-height:1.4}
+.custom-list li{margin-bottom:3px}
 
 .nav-card{width:44px;height:44px;background:rgba(255,255,255,0.7);border:1px solid #b8dfb8;border-radius:50%;color:#4e6552;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
 .dots{display:flex;gap:8px;margin:14px 0 6px}
@@ -82,14 +74,14 @@ header>p:last-child{max-width:690px;margin:10px auto 16px;color:#3f543b;line-hei
 .dot.active{width:26px;border-radius:99px;background:var(--green)}
 .hint{color:#4a6345;font-size:0.78rem;margin-bottom:16px}
 
-footer{color:#3f543b;padding:0 16px;max-width:720px;margin:0 auto}
+footer{color:#3f543b;padding:0 16px;max-width:720px;main:0 auto}
 footer>p{font-size:0.95rem;line-height:1.4}
 .project-credit{font-size:0.82rem !important;color:#4f674b;margin-bottom:8px;line-height:1.4}
 
 @media(max-width:768px){
   .stage{padding:16px 10px}
   .flashcard-area{grid-template-columns:1fr;gap:12px;width:100%}
-  .flashcard{height:330px;border-radius:20px;padding:22px}
+  .flashcard{height:410px;border-radius:20px;padding:20px}
   .nav-card{display:none}
   .answer-buttons{flex-direction:column;width:100%;align-items:stretch;gap:10px}
   .answer-btn{width:100%}
