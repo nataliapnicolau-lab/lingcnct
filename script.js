@@ -70,6 +70,8 @@ scrollTo({top:0,behavior:'smooth'});
 }
 
 document.querySelector('#startQuiz').onclick=()=>go(document.querySelector('#stage1'));
+document.querySelector('#toThinking').onclick=()=>go(document.querySelector('#stageSociolinguistics2') || document.querySelector('#stage2'));
+// Note: stage2 id is used for "vamos pensar..."
 document.querySelector('#toThinking').onclick=()=>go(document.querySelector('#stage2'));
 document.querySelector('#learnMore').onclick=()=>go(document.querySelector('#stage3'));
 
@@ -111,15 +113,9 @@ fc.addEventListener('touchend', e=>{
     if(Math.abs(diff)>50){if(diff>0)renderC(c-1);else renderC(c+1);}
 },{passive:true});
 
-document.querySelector('#restart').onclick=()=>{
-q=0;
-c=0;
-renderQ();
 dotsMake();
+renderQ();
 renderC(0);
-go(document.querySelector('#stageHome'));
-};
-
 dotsMake();
 renderQ();
 renderC(0);
