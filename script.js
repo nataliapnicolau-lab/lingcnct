@@ -2,15 +2,22 @@ const questions=[
 ['“Fazem dois anos que não nos vemos.”','errado','Na gramática normativa, o verbo “fazer”, quando indica tempo decorrido, é impessoal: “Faz dois anos...”.'],
 ['“Houveram muitos problemas durante a reunião.”','errado','Na norma-padrão, “haver” com sentido de existir é impessoal: “Houve muitos problemas...”.'],
 ['“Isso aconteceu há muito tempo”','certo','Correto! O verbo “haver” na acepção de tempo decorrido indica o pretérito, sendo impessoal e correto no singular.'],
-['“A gente vamos chegar mais cedo.”','errado','Na gramática normativa, a locução “a gente” exige o verbo no singular: “A gente vai chegar mais cedo.”'],
-['“Quem fala diferente da norma-padrão está falando português errado.”','errado','Na gramática normativa, a norma-padrão é o conjunto de regras prestigiadas, mas a variação linguística é inerente a todas as línguas vivas.']
+['“Nós vai chegar mais cedo.”','errado','Na gramática normativa, a concordância padrão exige que o verbo acompanhe a pessoa do discurso no plural: “Nós vamos chegar mais cedo.”'],
+['“Quem fala diferente da norma-padrão está falando português errado.”','errado','']
 ];
-let q=0,answered=false;const qt=document.querySelector('#questionText'),fb=document.querySelector('#feedback'),bar=document.querySelector('#progressBar'),label=document.querySelector('#progressLabel'),card=document.querySelector('#questionCard'),buttons=document.querySelectorAll('.answer-btn');
+let q=0,answered=false;
+const qt=document.querySelector('#questionText'),
+      fb=document.querySelector('#feedback'),
+      bar=document.querySelector('#progressBar'),
+      label=document.querySelector('#progressLabel'),
+      card=document.querySelector('#questionCard'),
+      buttons=document.querySelectorAll('.answer-btn'),
+      nextBtn=document.querySelector('#nextQuestion');
 
 function renderQ(){
 qt.textContent=questions[q][0];
 fb.textContent='';
-fb.classList.remove('show');
+nextBtn.classList.remove('show');
 buttons.forEach(b=>{b.classList.remove('selected');b.disabled=false});
 answered=false;
 label.textContent=`PERGUNTA ${q+1} DE ${questions.length}`;
@@ -24,27 +31,31 @@ buttons.forEach(x=>x.disabled=true);
 b.classList.add('selected');
 
 if(q === questions.length - 1){
-card.classList.add('out');
-setTimeout(()=>{
-go(document.querySelector('#stage2'));
-},320);
-return;
+  card.classList.add('out');
+  setTimeout(()=>{
+    go(document.querySelector('#stageSociolinguistics'));
+  },320);
+  return;
 }
 
 let ok=b.dataset.answer===questions[q][1];
 fb.textContent=(ok?'✓ ':'↳ Quase! ')+questions[q][2];
-fb.classList.add('show');
+
 setTimeout(()=>{
+  nextBtn.classList.add('show');
+}, 400);
+});
+
+nextBtn.onclick=()=>{
 card.classList.add('out');
 setTimeout(()=>{
-q++;
-renderQ();
-card.classList.remove('out');
-card.classList.add('in');
-setTimeout(()=>card.classList.remove('in'),500)
-},320)
-},2300)
-});
+  q++;
+  renderQ();
+  card.classList.remove('out');
+  card.classList.add('in');
+  setTimeout(()=>card.classList.remove('in'),500)
+},320);
+};
 
 function go(next){
 let cur=document.querySelector('.stage.active');
@@ -54,11 +65,12 @@ setTimeout(()=>{
 cur.classList.remove('active');
 cur.style='';
 next.classList.add('active');
-scrollTo({top:0,behavior:'smooth'})
+scrollTo({top:0,behavior:'smooth'});
 },450)
 }
 
 document.querySelector('#startQuiz').onclick=()=>go(document.querySelector('#stage1'));
+document.querySelector('#toThinking').onclick=()=>go(document.querySelector('#stage2'));
 document.querySelector('#learnMore').onclick=()=>go(document.querySelector('#stage3'));
 
 const cards=[
@@ -68,7 +80,10 @@ const cards=[
 ];
 
 let c=0;const fc=document.querySelector('#flashcard'),dots=document.querySelector('#dots');
-function dotsMake(){cards.forEach((_,i)=>{let d=document.createElement('button');d.className='dot';d.onclick=()=>renderC(i);dots.appendChild(d)})}
+function dotsMake(){
+dots.innerHTML='';
+cards.forEach((_,i)=>{let d=document.createElement('button');d.className='dot';d.onclick=()=>renderC(i);dots.appendChild(d)})
+}
 
 function renderC(i){
 c=(i+cards.length)%cards.length;
@@ -96,5 +111,15 @@ fc.addEventListener('touchend', e=>{
     if(Math.abs(diff)>50){if(diff>0)renderC(c-1);else renderC(c+1);}
 },{passive:true});
 
-document.querySelector('#restart').onclick=()=>{q=0;c=0;renderQ();renderC(0);go(document.querySelector('#stageHome'))};
-dotsMake();renderQ();renderC(0);
+document.querySelector('#restart').onclick=()=>{
+q=0;
+c=0;
+renderQ();
+dotsMake();
+renderC(0);
+go(document.querySelector('#stageHome'));
+};
+
+dotsMake();
+renderQ();
+renderC(0);
