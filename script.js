@@ -1,7 +1,7 @@
 const questions=[
 ['“Fazem dois anos que não nos vemos.”','errado','Na gramática normativa, o verbo “fazer”, quando indica tempo decorrido, é impessoal: “Faz dois anos...”.'],
 ['“Houveram muitos problemas durante a reunião.”','errado','Na norma-padrão, “haver” com sentido de existir é impessoal: “Houve muitos problemas...”.'],
-['“Isso aconteceu há muito tempo”','certo','Correto! O verbo “haver” na acepção de tempo decorrido indica o pretérito, sendo impessoal e correto no singular.'],
+['“Isso aconteceu há muito tempo”','certo','O verbo “haver” na acepção de tempo decorrido indica o pretérito, sendo impessoal e correto no singular.'],
 ['“Nós vai chegar mais cedo.”','errado','Na gramática normativa, a concordância padrão exige que o verbo acompanhe a pessoa do discurso no plural: “Nós vamos chegar mais cedo.”'],
 ['“Quem fala diferente da norma-padrão está falando português errado.”','errado','']
 ];
