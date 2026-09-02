@@ -70,15 +70,13 @@ scrollTo({top:0,behavior:'smooth'});
 }
 
 document.querySelector('#startQuiz').onclick=()=>go(document.querySelector('#stage1'));
-document.querySelector('#toThinking').onclick=()=>go(document.querySelector('#stageSociolinguistics2') || document.querySelector('#stage2'));
-// Note: stage2 id is used for "vamos pensar..."
 document.querySelector('#toThinking').onclick=()=>go(document.querySelector('#stage2'));
 document.querySelector('#learnMore').onclick=()=>go(document.querySelector('#stage3'));
 
 const cards=[
-['⚠️','O PROBLEMA','A circulação de informações sobre a língua na internet.','A circulação pública de informações sobre a língua portuguesa na internet costuma tratar a "norma padrão" como a única correta, o que reforça preconceitos e discriminações linguísticas. Plataformas digitais de grande acesso, como Google, Wikipédia e ferramentas de inteligência artificial (ChatGPT e Gemini), frequentemente não oferecem explicações neutras e embasadas sobre as variações da língua, o que acaba distanciando o conhecimento científico da população em geral.'],
-['💡','A PROPOSTA','Recursos abertos e colaborativos.','A proposta principal do projeto é criar recursos digitais abertos e colaborativos para qualificar o conhecimento público sobre o idioma e reduzir estigmas. A pesquisa se desenvolve em três etapas integradas: revisão de terminologias, intervenção em espaços digitais de grande consulta e desenvolvimento de uma ferramenta online de conversão entre normas.'],
-['🎯','O OBJETIVO','Transformação social e direitos linguísticos.','O objetivo final da pesquisa é contribuir, a médio e longo prazo, para uma transformação social voltada aos direitos linguísticos, melhorando a qualidade do que se lê sobre o português na internet. O projeto busca diminuir preconceitos sobre as diferentes formas de falar, apoiar práticas mais justas na educação e na comunicação, e consolidar referências gratuitas, verificáveis e duradouras sobre a variação da nossa língua no meio digital.']
+['⚠️','O PROBLEMA','A circulação de informações sobre a língua na internet.', '<p>A circulação pública de informações sobre a língua portuguesa na internet costuma tratar a "norma-padrão" como a única correta, o que reforça preconceitos e discriminações linguísticas. Plataformas digitais de grande acesso, como o Google e ferramentas de inteligência artificial, frequentemente não oferecem explicações neutras e embasadas sobre as variações da língua, distanciando o conhecimento científico da população.</p>'],
+['💡','NOSSA PROPOSTA','Recursos abertos e colaborativos.', '<p>A proposta principal do projeto é criar recursos digitais abertos e colaborativos para qualificar o conhecimento público sobre o idioma e reduzir estigmas. A pesquisa se desenvolve em três etapas integradas:</p><ol class="custom-list"><li>Revisão de terminologia</li><li>Intervenção em espaços digitais de grande consulta, como a Wikipédia</li><li>Desenvolvimento de uma ferramenta online de conversão entre normas.</li></ol>'],
+['🎯','NOSSO OBJETIVO','Transformação social e direitos linguísticos.', '<p>O objetivo final da pesquisa é contribuir, a médio e longo prazo, para uma transformação social voltada aos direitos linguísticos, melhorando a qualidade do que se lê sobre o português na internet. O projeto busca diminuir preconceitos sobre as diferentes formas de falar, apoiar práticas mais justas na educação e consolidar referências gratuitas e duradouras sobre a variação da nossa língua no meio digital.</p>']
 ];
 
 let c=0;const fc=document.querySelector('#flashcard'),dots=document.querySelector('#dots');
@@ -96,7 +94,7 @@ document.querySelector('#cardNumber').textContent=String(c+1).padStart(2,'0');
 document.querySelector('#cardIcon').textContent=x[0];
 document.querySelector('#cardTag').textContent=x[1];
 document.querySelector('#cardTitle').textContent=x[2];
-document.querySelector('#cardText').textContent=x[3];
+document.querySelector('#cardContent').innerHTML=x[3];
 [...dots.children].forEach((d,j)=>d.classList.toggle('active',j===c));
 fc.classList.remove('switching');
 },150);
