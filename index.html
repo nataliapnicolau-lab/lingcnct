@@ -7,12 +7,19 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="bg-animation">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
 <main class="experience">
 <section id="stageHome" class="stage stage-dark active">
 <div class="provocation">
 <p class="eyebrow">QUIZ INTERATIVO</p>
-<h2>Bem-vindo ao nosso quiz gramatical</h2>
-<p>Teste o seu domínio da língua portuguesa</p>
+<h2>Bem-vindo(a) ao nosso quiz gramatical!</h2>
+<p>Vamos testar o seu domínio da língua portuguesa?</p>
 <button id="startQuiz" class="pill-btn">Começar →</button>
 </div>
 </section>
@@ -29,7 +36,18 @@
 <button class="answer-btn" data-answer="certo">Certo</button>
 <button class="answer-btn" data-answer="errado">Errado</button>
 </div>
+<div id="feedbackContainer" class="feedback-container">
 <p id="feedback" class="feedback"></p>
+<button id="nextQuestion" class="pill-btn next-q-btn">Ir para a próxima →</button>
+</div>
+</div>
+</section>
+
+<section id="stageSociolinguistics" class="stage stage-dark">
+<div class="provocation sociolinguistics-prov">
+<h2 class="fade-text">Você já parou para pensar por que algumas formas de falar são consideradas "certas" e outras "erradas"?</h2>
+<p class="fade-text delay-1">A verdade é que a ideia de que existe apenas um jeito certo de falar português é um mito.<br><br>A Sociolinguística — a ciência que estuda a língua na vida real — nos mostra que toda língua muda com o tempo, varia de região para região e se adapta a diferentes situações do dia a dia. O que chamamos de "norma-padrão" é apenas uma variedade da língua.</p>
+<button id="toThinking" class="pill-btn fade-text delay-2">Mas...</button>
 </div>
 </section>
 
@@ -37,8 +55,8 @@
 <div class="provocation">
 <div class="thinking">🤔</div>
 <p class="eyebrow">ENTÃO, VAMOS PENSAR...</p>
-<h2>A língua é viva, diversa e cheia de alternativas para cada situação.</h2>
-<p>Sendo assim, por que acabamos de reduzir tudo a um simples <span>"certo" ou "errado"</span>?</p>
+<h2>Se a língua é viva, diversa e cheia de alternativas para cada situação...</h2>
+<p>Então por que acabamos de reduzir tudo a um simples <span>"certo" ou "errado"</span>?</p>
 <button id="learnMore" class="pill-btn">Quero saber mais →</button>
 </div>
 </section>
